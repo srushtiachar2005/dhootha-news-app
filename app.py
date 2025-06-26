@@ -1,4 +1,3 @@
-# --- app.py ---
 import streamlit as st
 from datetime import datetime
 from dotenv import load_dotenv
@@ -6,22 +5,16 @@ from news_client import NewsAPIClient
 from news_utils import display_articles, display_rss_feed
 import os
 
-# Load API keys from Streamlit secrets or .env fallback
 load_dotenv()
 
-# Streamlit page configuration
 st.set_page_config(page_title="📰 Dहooతha", layout="wide")
 
-# Title only (removed multilingual descriptions)
 st.title("📰 Dहooతha: Daily News Summarizer")
 
-# Initialize NewsAPI client
 client = NewsAPIClient()
 
-# ---- Sidebar Filters ----
 st.sidebar.header("📋 Filters")
 
-# News sources
 NEWS_SOURCES = {
     "All Sources": None,
     "BBC News": "bbc-news",
@@ -49,7 +42,7 @@ if st.sidebar.button("Fetch News"):
             sources=source_code,
             from_param=date_str,
             to=date_str,
-            language="en",  # Fixed to English only
+            language="en",  
             sort_by="publishedAt",
             page_size=100
         )
