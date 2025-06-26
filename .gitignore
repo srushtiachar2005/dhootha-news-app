@@ -1,2 +1,3 @@
-NEWSAPI_KEY=833e82a1396d4aca9b88dc8a5f399496
-
+# Ignore the secrets file
+.env
+.streamlit/secrets.toml
