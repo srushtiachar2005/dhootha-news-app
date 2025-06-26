@@ -1,20 +1,12 @@
 import os
+import streamlit as st
 import requests
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class NewsAPIClient:
     def __init__(self, api_key=None):
-        try:
-            import streamlit as st
-            self.api_key = api_key or st.secrets.get("NEWSAPI_KEY")
-        except:
-            self.api_key = api_key or os.getenv("NEWSAPI_KEY")
-
+        self.api_key = api_key or st.secrets["NEWSAPI_KEY"] or os.getenv("NEWSAPI_KEY")
         if not self.api_key:
             raise ValueError("API key is missing.")
-
         self.base_url = "https://newsapi.org/v2"
 
     def get_top_headlines(self, **params):
